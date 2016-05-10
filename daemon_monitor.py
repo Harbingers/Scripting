@@ -12,6 +12,11 @@ def count_process(process_name):
     ps.wait()
     print(process_name, ' ', output)
     return output
+    
+def get_cpu():
+    output = os.getloadavg()
+    print output[2]
+    return output[2]
 
 def send_email(process_name, server_name, type):
     SERVER = "localhost"
@@ -23,6 +28,14 @@ def send_email(process_name, server_name, type):
     message = 'Subject: %s\n\n%s' % (SUBJECT, TEXT)
     server = smtplib.SMTP(SERVER)
     server.sendmail(FROM, TO, message)
+
+def monitor_cpuload():
+    num = get_cpu()
+    if(num > 5):
+        print "cpu load is larger than 5 !!!"
+        send_email("cpu load", "web server 1", "is larger than 5")
+    else:
+        print "cpu load is smaller than 5 !!!"
 
 def monitor_apache2():
     num = count_process("apache2")
@@ -38,8 +51,8 @@ def monitor_ntp():
         print "ntp is running !!!"
     else:
         print "ntp is not running !!!"
-        send_email("ntp", "prod-workers", "is not running")
+        send_email("ntp", "web server 1", "is not running")
 
-
+monitor_cpuload()
 monitor_apache2()
 monitor_ntp()
