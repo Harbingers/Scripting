@@ -32,4 +32,14 @@ def monitor_apache2():
         print "apache2 is not running !!!"
         send_email("apache2", "web server 1", "is not running" )
 
+def monitor_ntp():
+    num = count_process("ntp")
+    if(num > 0):
+        print "ntp is running !!!"
+    else:
+        print "ntp is not running !!!"
+        send_email("ntp", "prod-workers", "is not running")
+
+
 monitor_apache2()
+monitor_ntp()
