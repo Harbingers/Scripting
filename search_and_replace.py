@@ -7,7 +7,7 @@ def search_and_replace(dir, old_str, new_str):
             fpath = os.path.join(dname, fname)
             with open(fpath) as f:
                 s = f.read()
-            s = s.replace(oldstr, newstr)
+            s = s.replace(old_str, new_str)
             with open(fpath, "w") as f:
                 f.write(s)
                 
