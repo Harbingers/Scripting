@@ -6,4 +6,4 @@
 4. <b>daemon_monitor</b>: monitor whether a certain process / daemon is running
 5. <b>rename_files</b>: rename files in batch in a certain folder
 6. <b>search_and_replace</b>: search strings in a batch of files and replace it with new strings
-7. <b>analyze_logs<b>: get the top k most frequent errors in a log file
+7. <b>analyze_logs</b>: get the top k most frequent errors in a log file
